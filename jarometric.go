@@ -11,14 +11,14 @@ import (
 	"math"
 )
 
-//Jaro Similarity is the edit distance between two strings.
-//See https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance
+// Jaro Similarity is the edit distance between two strings.
+// See https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance
 func JaroMetric(a, b string) (float64, error) {
 	if len(a) == 0 || len(b) == 0 {
 		return math.NaN(), fmt.Errorf("length of the strings can not be equal to 0 a=%d, b=%d", len(a), len(b))
 	}
 	if a == b {
-		return 1.00, nil
+		return 1.0, nil
 	}
 	// compute the window of possible matches
 	matchDistance := (max(len(a), len(b)) / 2) - 1
@@ -45,7 +45,7 @@ func JaroMetric(a, b string) (float64, error) {
 	}
 	// if there are 0 matches, no need further computation
 	if matches == 0 {
-		return 0, nil
+		return 0.0, nil
 	}
 
 	k := 0
@@ -78,18 +78,3 @@ func score(matches, transportation, lengthOfA, lengthOfB int) float64 {
 	return (matchingCharsOfA + matchingCharsOfB + transposition) / 3.0
 }
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	} else {
-		return b
-	}
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	} else {
-		return b
-	}
-}

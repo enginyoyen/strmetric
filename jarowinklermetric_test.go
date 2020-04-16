@@ -11,20 +11,20 @@ import (
 	"testing"
 )
 
-func TestJaroMetric(t *testing.T) {
+func TestJaroWinklerMetric(t *testing.T) {
 	var testCases = []struct {
 		a        string
 		b        string
 		distance float64
 	}{
 		{"identical", "identical", 1.0},
-		{"martha", "marhta", 0.944444},
-		{"DWAYNE", "DUANE", 0.822222},
+		{"martha", "marhta", 0.961111},
+		{"DWAYNE", "DUANE",  0.840000},
 		{"JELLYFISH", "SMELLYFISH", 0.896296},
 	}
 
 	for _, test := range testCases {
-		distance, _ := JaroMetric(test.a, test.b)
+		distance, _ := JaroWinklerMetric(test.a, test.b)
 		if fmt.Sprintf("%.6f", distance) != fmt.Sprintf("%.6f", test.distance) {
 			t.Errorf("Expected %f, got %f, for inputs:  %s & %s", test.distance, distance, test.a, test.b)
 		}

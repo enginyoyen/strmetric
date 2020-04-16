@@ -8,6 +8,7 @@ Currently, package provides following similarity metrics;
 * [Dice / Sorensen](http://en.wikipedia.org/wiki/Dice%27s_coefficient)
 * [Hamming](http://en.wikipedia.org/wiki/Hamming_distance)
 * [Jaro](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
+* [Jaro-Winkler](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
 
 
 ## Examples
@@ -30,6 +31,13 @@ Jaro Similarity is the edit distance between two strings. The higher the Jaro di
 
 ```
 strmetric.JaroMetric("JELLYFISH", "SMELLYFISH") // 0.896296
+```
+# Jaro-Winkler Metric
+Uses the Jaro similarity but takes both string prefix into an account(up-to 4 characters) and factors into a score.
+
+```
+strmetric.JaroMetric("martha", "marhta") // 0.944444
+strmetric.JaroWinklerMetric("martha", "marhta") // 0.961111
 ```
 
 # Licence 
