@@ -9,7 +9,7 @@ Currently, package provides following similarity metrics;
 * [Hamming](http://en.wikipedia.org/wiki/Hamming_distance)
 * [Jaro](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
 * [Jaro-Winkler](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
-
+* [Levenshtein](http://en.wikipedia.org/wiki/Levenshtein_distance)
 
 ## Examples
 #### Dice / Sorensen Metric
@@ -19,7 +19,8 @@ strmetric.DiceSorensonMetric("night", "nacht") // 0.6
 ```
 
 #### Hamming Metric
-The Hamming distance measures the minimum number of substitutions required to change one string into the other, or the minimum number of errors that. 
+The Hamming distance measures the minimum number of substitutions required to change one string into the other, or the minimum number of errors that.
+Used for error detection.
 
 ```
 strmetric.HammingMetric("11011001", "10011101") // 2
@@ -32,12 +33,18 @@ Jaro Similarity is the edit distance between two strings. The higher the Jaro di
 ```
 strmetric.JaroMetric("JELLYFISH", "SMELLYFISH") // 0.896296
 ```
-# Jaro-Winkler Metric
+#### Jaro-Winkler Metric
 Uses the Jaro similarity but takes both string prefix into an account(up-to 4 characters) and factors into a score.
 
 ```
 strmetric.JaroMetric("martha", "marhta") // 0.944444
 strmetric.JaroWinklerMetric("martha", "marhta") // 0.961111
+```
+#### Levenshtein
+Levenshtein distance is a string metric for measuring the difference between two sequences.
+Used for spell checkers, error detection/correction in optical character recognition, etc.
+```
+strmetric.LevenshteinMetric("kitten", "sitting") // 3
 ```
 
 # Licence 
